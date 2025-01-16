@@ -8,16 +8,16 @@ namespace Task01OOp
 {
     public class BorrowedBook : LibraryItem
     {
-        public Book BookDetails {  get; set; }
-        
-        public string BorrowerName {  get; set; }
+        public Book BookDetails { get; set; }
+
+        public string BorrowerName { get; set; }
 
         public DateTime BorrowedDate { get; set; }
 
-        public BorrowedBook(int itemId, Book book, string borrowerName, DateTime borrowedDate)
+        public BorrowedBook(int itemId, Book _book, string borrowerName, DateTime borrowedDate)
         {
             ItemId = itemId;
-            BookDetails = book;
+            BookDetails = _book;
             BorrowerName = borrowerName;
             BorrowedDate = borrowedDate;
         }
@@ -27,5 +27,11 @@ namespace Task01OOp
             return (DateTime.Now - BorrowedDate).Days;
         }
 
+
+        public override string ToString()
+        {
+            return $"Borrower: {BorrowerName}, Borrowed Date: {BorrowedDate.ToShortDateString()}, " +
+                   $"Book Details: {BookDetails}, Is Available: {IsAvailable}";
+        }
     }
 }
